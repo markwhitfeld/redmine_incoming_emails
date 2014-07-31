@@ -1,0 +1,29 @@
+<% html_title("#{l(:label_settings)}: #{@plugin.name}") %>
+<div class="autoscroll">
+  <table class="list">
+    <thead><tr>
+      <th></th>
+      <th><%= l(:field_login) %></th>
+      <th><%= l(:field_firstname) %></th>
+      <th><%= l(:field_lastname) %></th>
+      <th><%= l(:field_mail) %></th>
+      <th><%= l(:field_email_default_project) %></th>
+    </tr></thead>
+    <tbody>
+  <% for user in User.logged.all -%>
+    <tr class="<%= user.css_classes %> <%= cycle("odd", "even") %>">
+      <td class="username"><%= h(user.id) %></td>
+      <td class="username"><%= h(user.login) %></td>
+      <td class="firstname"><%= h(user.firstname) %></td>
+      <td class="lastname"><%= h(user.lastname) %></td>
+      <td class="email"><%= mail_to(h(user.mail)) %></td>
+      <td class="default_user_project">
+        <%= select_tag("settings[#{user.mail}]",
+            content_tag(:option, '') +
+            options_from_collection_for_select(user.memberships.map {|x| x.project }, :id, :name, @settings[user.mail].to_i)) %>
+      </td>
+    </tr>
+  <% end -%>
+    </tbody>
+  </table>
+</div>
