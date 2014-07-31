@@ -20,8 +20,8 @@ Redmine::Plugin.register :redmine_incoming_emails do
   author 'Mark Whitfeld'
   description 'This is a plugin for Redmine that allows for the configuration of the default project used when a user logs a new issue using email.'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/markwhitfeld/redmine_incoming_emails'
+  author_url 'https://github.com/markwhitfeld/redmine_incoming_emails'
   
   # See note at top of file regarding support for 1.x
   requires_redmine :version_or_higher => '2.0.0'
