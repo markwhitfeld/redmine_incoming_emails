@@ -1,3 +1,3 @@
 # German strings go here for Rails i18n
-en:
+de:
   field_email_default_project: "Standard-Projekt für Tickets per E-Mail"
