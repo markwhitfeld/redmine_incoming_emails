@@ -11,7 +11,8 @@ module IncomingEmails
         base.class_eval do
           unloadable
           
-          alias_method_chain :target_project, :user_specific_defaults
+          alias_method :target_project_without_user_specific_defaults, :target_project
+          alias_method :target_project, :target_project_with_user_specific_defaults
         end
       end
 
