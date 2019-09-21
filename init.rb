@@ -4,7 +4,11 @@
 # Patches to the Redmine core.
 require 'dispatcher' unless Rails::VERSION::MAJOR >= 3
 
-if Rails::VERSION::MAJOR >= 3
+if Rails::VERSION::MAJOR >= 5
+  ActiveSupport::Reloader.to_prepare do
+    require_dependency 'redmine_incoming_emails/patches/mail_handler_patch'
+  end
+elsif Rails::VERSION::MAJOR >= 3
   ActionDispatch::Callbacks.to_prepare do
     require_dependency 'redmine_incoming_emails/patches/mail_handler_patch'
   end
